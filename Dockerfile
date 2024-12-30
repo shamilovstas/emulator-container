@@ -13,10 +13,11 @@ RUN mkdir -p /usr/local/android/sdk/cmdline-tools/latest &&\
     ln -s $ANDROID_HOME/cmdline-tools/latest/bin/avdmanager /bin/avdmanager && \
     ln -s $ANDROID_HOME/emulator/emulator /bin/emulator
 RUN echo | avdmanager create avd --name testAvd --abi google_apis/x86_64 --package "system-images;android-35;google_apis;x86_64"
-RUN apt install -y libx11-dev iproute2
+RUN apt install -y libx11-dev libpulse-dev libdrm-dev libxi-dev libxkbfile-dev libxcb-cursor0 iproute2 qt6-base-dev
+ENV DISPLAY=:0
 EXPOSE 5037/tcp
 COPY run.sh .
 RUN chmod +x run.sh
 ENTRYPOINT ["./run.sh"]
-CMD ["emulator", "-avd", "testAvd", "-no-window", "-no-metrics", "-no-snapshot", "-verbose"]
+CMD ["emulator", "-avd", "testAvd", "-no-metrics", "-no-snapshot", "-verbose"]
 
