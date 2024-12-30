@@ -1,4 +1,0 @@
-adb -a nodaemon server start                                            # Run adb on all interfaces
-adb -H {{ host }} ...                                                   # Set remote host
-emulator -avd testAVD -no-window -no-metrics -no-snapshot -verbose      # Start emulator
-avdmanager create avd --name testAvd --abi google_apix/x86_64 --package "system-images;android-35;google-apis;x86_64" # Create avd
