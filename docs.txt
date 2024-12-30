@@ -2,3 +2,4 @@ adb -a nodaemon server start                                            # Run ad
 adb -H {{ host }} ...                                                   # Set remote host
 emulator -avd testAVD -no-window -no-metrics -no-snapshot -verbose      # Start emulator
 avdmanager create avd --name testAvd --abi google_apix/x86_64 --package "system-images;android-35;google-apis;x86_64" # Create avd
+sudo podman container run --replace --device=/dev/kvm -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix -p 42069:5037 --name emulator emulator-image # Run emulator with x11 forwarding
